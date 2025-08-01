@@ -25,8 +25,21 @@ describe('Access a - Orange HRM', () => {
     cy.get('.oxd-form').contains('Login').click() 
     cy.get('.oxd-alert').contains('Invalid credentials')
     cy.screenshot('Login - Credencial inválida')
-    
+  
+  }),
 
-    
+  it.only('CT - 003 - Password Reset', () => {
+    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.get('.orangehrm-login-slot').contains('Forgot your password?')
+      .click()
+    cy.url().should('include', '/auth/requestPasswordResetCode')
+    cy.get('.orangehrm-card-container').should('contain', 'Reset Password')
+    cy.get('.orangehrm-card-container').should('contain', 'Username')
+    cy.get('.oxd-input').type('Admin')
+    cy.get('.oxd-button').contains('Reset Password').click()
+    cy.url().should('include', '/auth/sendPasswordReset')
+    cy.get('.orangehrm-card-container').should('contain', 'Reset Password link sent successfully')
+
   })
+
 })
