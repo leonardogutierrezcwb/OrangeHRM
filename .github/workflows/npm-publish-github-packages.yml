@@ -33,4 +33,4 @@ jobs:
       - run: npm ci
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.SHA256:pJoNt3dFqVRYHTIxOBNVU2+++aGyXXK8NkIXCHYeug4}}
+          NODE_AUTH_TOKEN: ${{secrets.pJoNt3dFqVRYHTIxOBNVU2+++aGyXXK8NkIXCHYeug4}}
