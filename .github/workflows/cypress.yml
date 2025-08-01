@@ -9,25 +9,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        containers: [1, 2]
+        containers: [1]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install root dependencies
-        run: npm install
-
-      - name: Install Cypress dependencies
-        working-directory: ./cypress/
+      - name: Install dependencies
+        working-directory: ./cypress
         run: npm ci
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
           working-directory: ./cypress
-          start: npm --prefix ../ start
-          wait-on: 'http://localhost:3000'
           record: true
           parallel: true
         env:
