@@ -35,7 +35,7 @@ jobs:
     - name: Run Cypress tests
       uses: cypress-io/github-action@v6
       with:
-        working-directory: ./cypress
+        working-directory: ./cypress/cypress/e2e/
         start: npm start
         wait-on: 'http://localhost:3000'
         browser: chrome
