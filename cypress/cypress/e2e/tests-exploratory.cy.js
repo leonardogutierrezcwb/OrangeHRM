@@ -28,7 +28,7 @@ describe('Access a - Orange HRM', () => {
   
   }),
 
-  it.only('CT - 003 - Password Reset', () => {
+  it('CT - 003 - Password Reset', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
     cy.get('.orangehrm-login-slot').contains('Forgot your password?')
       .click()
