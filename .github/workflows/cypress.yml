@@ -11,6 +11,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install dependencies (raiz)
+        run: npm ci
+
       - name: Install Cypress dependencies
         working-directory: ./cypress
         run: npm ci
@@ -19,7 +22,8 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: ./cypress
-          start: npm start
+          # Start será executado a partir da raiz, subindo o servidor
+          start: npm --prefix ../ start
           wait-on: 'http://localhost:3000'
           record: true
           parallel: true
