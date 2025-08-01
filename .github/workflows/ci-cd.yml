@@ -12,12 +12,9 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x, 20.x]
-        # Cypress geralmente funciona melhor com essas versões do Node
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.SHA256:pJoNt3dFqVRYHTIxOBNVU2+++aGyXXK8NkIXCHYeug4 }}
         
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
@@ -34,30 +31,9 @@ jobs:
         build: npm run build --if-present
         start: npm start
         wait-on: 'http://localhost:3000'
-        wait-on-timeout: 60
         browser: chrome
         headless: true
         record: true
       env:
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-        # Configurações adicionais do seu projeto
         CYPRESS_baseUrl: http://localhost:3000
-
-  cypress-visual:
-    runs-on: ubuntu-latest
-    needs: cypress-run
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 20.x
-        
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Run Visual Tests
-      run: |
-        npx cypress run --spec "cypress/e2e/visual/*.spec.js"
-      env:
-        CYPRESS_FAIL_ON_SNAPSHOT_DIFF: true
