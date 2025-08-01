@@ -20,15 +20,10 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-        # Removemos a configuração de cache já que não há lock file
+        
         
     - name: Install dependencies
-      run: npm install
-      # Mudamos de 'npm ci' para 'npm install' já que não há lock file
-      
-    - name: Generate lock file
-      run: npm install --package-lock-only
-      # Opcional: cria um package-lock.json para futuras execuções
+      run: npm install --no-package-lock   
       
     - name: Run Cypress tests
       uses: cypress-io/github-action@v6
