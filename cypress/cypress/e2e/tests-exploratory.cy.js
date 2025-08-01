@@ -2,7 +2,7 @@
 
 //const SuperFakerBrasil = require('faker-brasil')
 
-describe('Acessar - Orange HRM', () => {
+describe('Access a - Orange HRM', () => {
   //const fakerBrasil = new SuperFakerBrasil()
   it('CT - 001 - Login', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
@@ -18,7 +18,7 @@ describe('Acessar - Orange HRM', () => {
     
   }),
 
-  it('CT - 002 - Credencial Inválida', () => {
+  it('CT - 002 - Credencials Invalid', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
     cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type('Admin') 
     cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type('admin1231') 
