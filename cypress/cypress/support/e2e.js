@@ -18,7 +18,7 @@ import './commands'
 
 before(() => {
   cy.intercept({ resourceType: /xhr|fetch/ }, { log: false })
-  // Pode deixar vazio, se não precisar interceptar tudo
+  
 })
 
 Cypress.on('uncaught:exception', (err, runnable) => { return false; });

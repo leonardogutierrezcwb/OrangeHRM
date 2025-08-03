@@ -4,6 +4,7 @@
   },
   "scripts": {
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "cypress cloud": "npx cypress run --record --key 1e69120a-3842-4316-aa32-9866ac5e7751"
   }
 }
