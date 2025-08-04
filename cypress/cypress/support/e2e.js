@@ -16,9 +16,12 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+require('cypress-xpath')
+
 before(() => {
   cy.intercept({ resourceType: /xhr|fetch/ }, { log: false })
   
 })
 
-Cypress.on('uncaught:exception', (err, runnable) => { return false; });
+Cypress.on('uncaught:exception', (err, runnable) => { return false; })
+
