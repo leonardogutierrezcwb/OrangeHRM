@@ -58,6 +58,7 @@ describe('Access a - Orange HRM', () => {
     cy.get(':nth-child(3) > :nth-child(2) > .oxd-input').type(faker.name.lastName())
 
     cy.get('.oxd-form-actions').contains('Save').click()
+    cy.wait(2000)
     cy.get('.oxd-toast').should('contain', 'Successfully Saved')
 
     cy.screenshot('PIM - Add Employee')
