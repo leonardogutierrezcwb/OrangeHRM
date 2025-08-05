@@ -38,6 +38,8 @@ describe('Access a - Orange HRM', () => {
     cy.get('.user-password-cell > .oxd-input-group > :nth-child(2) > .oxd-input').type(generatedPassword)
     cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type(generatedPassword)
 
+    cy.wait(1000)
+
     cy.get('.oxd-form-actions').contains('Save').click()
     cy.get('.oxd-toast').should('contain', 'Successfully Saved')
 
