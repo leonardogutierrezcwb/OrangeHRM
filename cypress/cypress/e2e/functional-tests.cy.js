@@ -67,7 +67,7 @@ describe('Access a - Orange HRM', () => {
    
   }),
 
-  it.only('CT - Create Recruitment - Candidate', () => {
+  it('CT - Create Recruitment - Candidate', () => {
     cy.visit(home)
 
     cy.get('.oxd-main-menu-item').contains('Recruitment').click()
