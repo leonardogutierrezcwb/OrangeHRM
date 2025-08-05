@@ -10,6 +10,7 @@ const password = 'admin123'
 describe('Access a - Orange HRM', () => {
 
   const generatedPassword = faker.internet.password(10, true)
+  const generatedUsername = faker.internet.userName().toLowerCase()
 
   beforeEach(() => {
     cy.login()
