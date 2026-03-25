@@ -16,7 +16,7 @@ describe('Access a - Orange HRM', () => {
     cy.login()
   })
 
-  it('CT - Include - Admin', () => {
+  it('CT 001 - Include - Admin', () => {
     cy.visit(home)
 
     cy.get('.oxd-main-menu-item').contains('Admin').click()
@@ -47,7 +47,7 @@ describe('Access a - Orange HRM', () => {
     cy.screenshot('Admin - Add User')
   })
 
-  it('CT - Create PIM - Employee', () => {
+  it('CT 002 - Create PIM - Employee', () => {
     cy.visit(home)
 
     cy.get('.oxd-main-menu-item').contains('PIM').click()
@@ -67,7 +67,7 @@ describe('Access a - Orange HRM', () => {
     cy.screenshot('PIM - Add Employee')
   })
 
-  it('CT - Create Recruitment - Candidate', () => {
+  it('CT 003 - Create Recruitment - Candidate', () => {
     cy.visit(home)
 
     cy.get('.oxd-main-menu-item').contains('Recruitment').click()

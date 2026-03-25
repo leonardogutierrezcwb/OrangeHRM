@@ -1,0 +1,162 @@
+Deep Seek 
+
+Cenários Adicionais para Testes Funcionais:
+Edição de Usuário/Employee/Candidate:
+
+Testar a edição de um usuário/employee/candidate recém-criado
+
+Verificar se as alterações são salvas corretamente
+
+Exclusão de Registros:
+
+Testar a exclusão de um usuário criado
+
+Testar a exclusão de um employee
+
+Testar a exclusão de um candidate
+
+Pesquisa/Filtros:
+
+Testar a funcionalidade de busca em cada módulo (Admin, PIM, Recruitment)
+
+Verificar diferentes critérios de filtro
+
+Validação de Campos Obrigatórios:
+
+Testar o envio de formulários sem preencher campos obrigatórios
+
+Verificar mensagens de erro apropriadas
+
+Testes de Usuário com Diferentes Perfis:
+
+Criar e testar login com usuário não-admin
+
+Verificar permissões de acesso
+
+Cenários Adicionais para Testes Exploratórios:
+Testes de Responsividade:
+
+Verificar o comportamento em diferentes tamanhos de tela
+
+Testes de Performance Básicos:
+
+Medir tempos de carregamento de páginas críticas
+
+Testes de Acessibilidade:
+
+Verificar contraste de cores
+
+Verificar labels adequados para campos de formulário
+
+Testes de Segurança Básica:
+
+Tentar acessar URLs diretamente sem estar autenticado
+
+Testar XSS básico em campos de texto
+
+Testes de Internacionalização:
+
+Verificar suporte a diferentes idiomas (se aplicável)
+
+Testes de Estado da Sessão:
+
+Verificar comportamento ao voltar após logout
+
+Testar timeout de sessão
+
+Upload de Arquivos:
+
+Testar upload de foto do employee
+
+Testar upload de currículo do candidate
+
+Paginação:
+
+Testar navegação por páginas em listagens longas
+
+Ordenação:
+
+Testar ordenação por diferentes colunas
+
+Exportação de Dados:
+
+Testar funcionalidades de exportação (se existirem)
+
+Melhorias para os Testes Existentes:
+Adicionar asserções mais específicas para verificar dados salvos
+
+Implementar limpeza de dados após os testes (ex: deletar usuários/employees criados)
+
+Adicionar testes para campos com limites de caracteres
+
+Testar combinações inválidas de dados (email mal formatado, etc)
+
+Você também pode considerar a criação de:
+
+Testes de API para endpoints críticos
+
+Testes de integração entre módulos
+
+Testes de regressão visual
+
+//-//-//-//--//-//-//-//--//-//-//-//--//-//-//-//--//-//-//-//--//-//-//-//--//-//-//-//--
+
+CHAT GPT:
+
+🛡️ Segurança e autenticação
+CT 005 - Acesso direto a páginas sem login
+
+Tentar acessar /dashboard/index sem autenticação e validar se é redirecionado para /auth/login.
+
+CT 006 - Sessão expirada
+
+Simular o tempo de inatividade prolongada (via cy.wait() ou manipulação de cookies) e tentar continuar navegando.
+
+👥 Administração (Admin)
+CT 007 - Validação de campos obrigatórios ao cadastrar novo usuário
+
+Tentar salvar sem preencher todos os campos e validar mensagens de erro.
+
+CT 008 - Cadastro de usuário com username duplicado
+
+Cadastrar um usuário com o mesmo username e validar a mensagem de erro.
+
+👤 PIM (Employee Management)
+CT 009 - Edição de funcionário
+
+Após cadastrar, procurar pelo funcionário e editar informações (ex: sobrenome).
+
+CT 010 - Excluir funcionário (se permitido)
+
+Validar que o registro é removido e não aparece na listagem.
+
+🔎 Recrutamento (Recruitment)
+CT 011 - Validação de e-mail inválido
+
+Testar campo de e-mail com dados malformados e verificar mensagens de erro.
+
+📊 Dashboard e My Info
+CT 012 - Verificar dados do Dashboard
+
+Validar se os cards e gráficos estão sendo carregados corretamente após login.
+
+CT 013 - Alteração de dados pessoais
+
+Modificar dados na seção "My Info", como endereço ou telefone (se permitido).
+
+📂 Documentação / Upload
+CT 014 - Upload de documento no perfil (My Info ou Recruitment)
+
+Validar se é possível fazer upload de arquivos (PDF, imagens) e verificar se aparecem na interface.
+
+🔄 Logout e fluxo final
+CT 015 - Logout via URL direta
+
+Acessar diretamente a URL de logout (/auth/logout) e validar comportamento.
+
+💡 Dicas extras:
+Teste de responsividade (modo mobile/tablet) via .viewport().
+
+Validações com interceptações de API via cy.intercept() para garantir que chamadas de rede estão funcionando corretamente.
+
+Performance básica: validar se o carregamento das páginas está abaixo de um tempo aceitável com cy.clock() + cy.tick() para testes controlados.

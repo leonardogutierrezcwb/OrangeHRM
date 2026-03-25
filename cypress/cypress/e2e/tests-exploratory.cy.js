@@ -11,7 +11,7 @@ describe('Access a - Orange HRM', () => {
     cy.login()
   })
 
-  it('CT - 001 - Login', () => {
+  it('CT 001 - Login', () => {
     cy.visit(home)
     cy.get('.oxd-userdropdown-tab > .oxd-icon').click()
     cy.get('.oxd-dropdown-menu').contains('Logout').click()
@@ -22,7 +22,7 @@ describe('Access a - Orange HRM', () => {
     
   })
 
-  it('CT - 002 - Navigation on System', () => {
+  it('CT 002 - Navigation on System', () => {
     cy.visit(login)
     cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type(username)
     cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type(password)
@@ -75,7 +75,7 @@ describe('Access a - Orange HRM', () => {
 
   })
 
-  it('CT - 003 - Credentials Invalid', () => {
+  it('CT 003 - Credentials Invalid', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
     cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type('Admin')
     cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type('admin1234') //Senha inválida
@@ -84,16 +84,16 @@ describe('Access a - Orange HRM', () => {
     cy.screenshot('Login - Credentials Invalid')
   })
 
-  it('CT - 004 - Password Reset', () => {
+  it('CT 004 - Password Reset', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get('.orangehrm-login-slot').contains('Forgot your password?').click()
-    cy.url().should('include', '/auth/requestPasswordResetCode')
-    cy.get('.orangehrm-card-container').should('contain', 'Reset Password')
-    cy.get('.orangehrm-card-container').should('contain', 'Username')
-    cy.get('.oxd-input').type('Admin')
-    cy.get('.oxd-button').contains('Reset Password').click()
-    cy.url().should('include', '/auth/sendPasswordReset')
-    cy.get('.orangehrm-card-container').should('contain', 'Reset Password link sent successfully')
+    cy.get('.oxd-userdropdown-tab').click()
+    cy.get('.oxd-dropdown-menu').contains('Change Password').click()
+    cy.get(':nth-child(1) > .oxd-grid-2 > :nth-child(2) > .oxd-input-group').type('admin123')
+    cy.get('.user-password-cell > .oxd-input-group').type('admin123')
+    cy.get('.user-password-row > .oxd-grid-2 > :nth-child(2) > .oxd-input-group').type('admin123')
+    cy.get('.oxd-button--secondary').contains('Save').click()
+    cy.wait(2000)
+    cy.get('.oxd-toast').contains('Successfully Saved') 
     cy.screenshot('Login - Password Reset')
   })
 
